@@ -1,0 +1,39 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Environment files and secrets
+.env
+.env.*
+!.env.example
+
+# ChronosAttack generated results and checkpoints
+chronos_*results/
+chronos_multimodel_results/
+chronos_multimodel_final/
+chronos_extensions/
+chronos_order_consistency/
+chronos_local_openweight_results/
+
+*_checkpoint.json
+*_ledger.json
+*.jsonl
+
+# Temporary / generated experiment artifacts
+*.tmp
+*.log
+
+# IDE / editor
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
