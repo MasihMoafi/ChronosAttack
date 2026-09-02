@@ -2,7 +2,9 @@ from __future__ import annotations
 
 import json
 import os
-import re
+import shutil
+import subprocess
+import tempfile
 import time
 from dataclasses import dataclass
 from pathlib import Path
@@ -25,6 +27,12 @@ class ProviderSpec:
 
 
 PROVIDERS: Dict[str, ProviderSpec] = {
+    "codex": ProviderSpec(
+        name="codex",
+        model="gpt-5.6-terra",
+        env_key="",
+        base_url=None,
+    ),
     "openai": ProviderSpec(
         name="openai",
         model="gpt-5.6-sol",
@@ -52,6 +60,43 @@ PROVIDERS: Dict[str, ProviderSpec] = {
 }
 
 
+FINAL_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "final_choice": {"type": "string", "enum": ["A", "B", "C"]},
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "brief_reason": {"type": "string"},
+    },
+    "required": ["final_choice", "confidence", "brief_reason"],
+    "additionalProperties": False,
+}
+
+STATE_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "current_choice": {"type": "string", "enum": ["A", "B", "C"]},
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "state_summary": {"type": "string"},
+        "brief_reason": {"type": "string"},
+    },
+    "required": [
+        "current_choice",
+        "confidence",
+        "state_summary",
+        "brief_reason",
+    ],
+    "additionalProperties": False,
+}
+
+CODEX_TOOL_EVENT_TYPES = {
+    "collab_tool_call",
+    "command_execution",
+    "file_change",
+    "mcp_tool_call",
+    "web_search",
+}
+
+
 class JsonlAuditLog:
     def __init__(self, path: Path):
         self.path = Path(path)
@@ -64,11 +109,12 @@ class JsonlAuditLog:
 
 class ProviderClient:
     """
-    Provider client wrapper for OpenAI, Gemini, DeepSeek, and Claude.
+    Provider client wrapper for Codex, OpenAI, Gemini, DeepSeek, and Claude.
 
     OpenAI, Gemini, and DeepSeek use OpenAI-compatible Chat Completions.
-    Claude uses Anthropic's native Messages API. The adapter preserves the
-    same system/task text and user/assistant message trajectory.
+    Claude uses Anthropic's native Messages API. Codex uses an isolated,
+    subscription-authenticated CLI agent and is recorded as a distinct
+    execution mode.
     """
 
     def __init__(
@@ -82,15 +128,22 @@ class ProviderClient:
             raise ValueError(f"Unknown provider: {provider}")
 
         spec = PROVIDERS[provider]
+        self.provider = provider
+        self.model = model or spec.model
+
+        if provider == "codex":
+            self.client = None
+            self.audit = JsonlAuditLog(
+                audit_path or Path(f"{provider}_api_audit.jsonl")
+            )
+            return
+
         api_key = os.getenv(spec.env_key)
         if not api_key:
             raise RuntimeError(
                 f"{spec.env_key} is not set. "
                 f"Set it before running provider={provider}."
             )
-
-        self.provider = provider
-        self.model = model or spec.model
 
         if provider == "claude":
             if Anthropic is None:
@@ -122,6 +175,40 @@ class ProviderClient:
         Best-effort preflight. Some accounts/providers may restrict model-list
         access, so a failed preflight is not treated as proof of unavailability.
         """
+        if self.provider == "codex":
+            if shutil.which("codex") is None:
+                return False
+            try:
+                login = subprocess.run(
+                    ["codex", "login", "status"],
+                    capture_output=True,
+                    text=True,
+                    timeout=15,
+                )
+                if login.returncode != 0:
+                    return False
+
+                catalog = subprocess.run(
+                    ["codex", "debug", "models"],
+                    capture_output=True,
+                    text=True,
+                    timeout=30,
+                )
+                if catalog.returncode != 0:
+                    return False
+                models = json.loads(catalog.stdout).get("models", [])
+                return any(
+                    isinstance(item, dict)
+                    and item.get("slug") == self.model
+                    for item in models
+                )
+            except (
+                OSError,
+                subprocess.SubprocessError,
+                TypeError,
+                ValueError,
+            ):
+                return False
         try:
             if self.provider == "claude":
                 # Anthropic's Models API uses model_id in current SDKs.
@@ -177,29 +264,195 @@ def normalize_messages(
     return messages
 
 
-def _strip_code_fence(text: str) -> str:
-    text = text.strip()
-    if text.startswith("```"):
-        text = re.sub(r"^```(?:json)?\s*", "", text, flags=re.I)
-        text = re.sub(r"\s*```$", "", text)
-    return text.strip()
-
-
 def parse_json_text(text: str) -> dict:
-    text = _strip_code_fence(text)
-
     try:
-        return json.loads(text)
-    except json.JSONDecodeError:
-        pass
+        obj = json.loads(text.strip())
+    except json.JSONDecodeError as exc:
+        raise ValueError(
+            f"Model did not return valid JSON: {text[:500]!r}"
+        ) from exc
 
-    # Conservative recovery for providers that prepend a short sentence.
-    start = text.find("{")
-    end = text.rfind("}")
-    if start >= 0 and end > start:
-        return json.loads(text[start:end + 1])
+    if not isinstance(obj, dict):
+        raise ValueError("Model response must be a JSON object.")
+    return obj
 
-    raise ValueError(f"Model did not return valid JSON: {text[:500]!r}")
+
+def _schema_for_stage(stage: Optional[str]) -> dict:
+    if stage and stage.startswith("stateful_step_"):
+        return STATE_SCHEMA
+    return FINAL_SCHEMA
+
+
+def _validate_response(obj: dict, stage: Optional[str]) -> None:
+    schema = _schema_for_stage(stage)
+    required = set(schema["required"])
+    if set(obj) != required:
+        raise ValueError(
+            f"Invalid response fields: expected={sorted(required)}, "
+            f"got={sorted(obj)}"
+        )
+
+    choice_key = (
+        "current_choice" if "current_choice" in required else "final_choice"
+    )
+    if obj[choice_key] not in ("A", "B", "C"):
+        raise ValueError(f"Invalid choice: {obj[choice_key]!r}")
+
+    confidence = obj["confidence"]
+    if (
+        isinstance(confidence, bool)
+        or not isinstance(confidence, (int, float))
+        or not 0 <= confidence <= 1
+    ):
+        raise ValueError(f"Invalid confidence: {confidence!r}")
+
+    for name in required - {choice_key, "confidence"}:
+        if not isinstance(obj[name], str):
+            raise ValueError(f"Invalid {name}: expected a string.")
+
+
+def _codex_auth_path() -> Path:
+    codex_home = Path(
+        os.environ.get("CODEX_HOME", Path.home() / ".codex")
+    )
+    auth_path = codex_home / "auth.json"
+    if not auth_path.is_file():
+        raise RuntimeError(
+            "Codex subscription authentication was not found. "
+            "Run `codex login` first; isolated execution requires auth.json."
+        )
+    return auth_path.resolve()
+
+
+def _codex_prompt(input_messages: List[dict]) -> str:
+    lines = [
+        "Use only the supplied conversation. Do not call tools, inspect files, "
+        "search the web, or delegate work."
+    ]
+    for msg in input_messages:
+        role = msg.get("role", "user").upper()
+        content = _flatten_content(msg.get("content", ""))
+        lines.append(f"<{role}>\n{content}\n</{role}>")
+    lines.append("Return only the required JSON object.")
+    return "\n\n".join(lines)
+
+
+def _run_codex(
+    *,
+    model: str,
+    instructions: str,
+    input_messages: List[dict],
+    stage: Optional[str],
+) -> tuple[str, dict, List[str]]:
+    with tempfile.TemporaryDirectory(prefix="chronos-codex-") as tmp:
+        root = Path(tmp)
+        workspace = root / "workspace"
+        isolated_home = root / "codex-home"
+        workspace.mkdir()
+        isolated_home.mkdir(mode=0o700)
+        (isolated_home / "auth.json").symlink_to(_codex_auth_path())
+
+        output_path = root / "response.json"
+        schema_path = root / "schema.json"
+        schema_path.write_text(
+            json.dumps(_schema_for_stage(stage)),
+            encoding="utf-8",
+        )
+
+        cmd = [
+            "codex",
+            "exec",
+            "--ephemeral",
+            "--ignore-user-config",
+            "--ignore-rules",
+            "--skip-git-repo-check",
+            "--json",
+            "--sandbox",
+            "read-only",
+            "-C",
+            str(workspace),
+            "-c",
+            f"developer_instructions={json.dumps(instructions or '')}",
+            "-c",
+            "project_doc_max_bytes=0",
+            "-c",
+            "features.plugins=false",
+            "--output-schema",
+            str(schema_path),
+            "-o",
+            str(output_path),
+            "-m",
+            model,
+            _codex_prompt(input_messages),
+        ]
+
+        env = os.environ.copy()
+        env["CODEX_HOME"] = str(isolated_home)
+        try:
+            result = subprocess.run(
+                cmd,
+                capture_output=True,
+                text=True,
+                timeout=120,
+                env=env,
+            )
+        except subprocess.TimeoutExpired as exc:
+            raise TimeoutError(
+                "codex exec timed out after 120 seconds"
+            ) from exc
+
+        if result.returncode != 0:
+            error = result.stderr.strip()[-2000:] or "no stderr"
+            raise RuntimeError(
+                f"codex exec exited {result.returncode}: {error}"
+            )
+
+        events = [
+            json.loads(line)
+            for line in result.stdout.splitlines()
+            if line.strip()
+        ]
+        tool_calls = sorted({
+            event.get("item", {}).get("type")
+            for event in events
+            if event.get("type") in ("item.started", "item.completed")
+            and event.get("item", {}).get("type")
+            in CODEX_TOOL_EVENT_TYPES
+        })
+        if tool_calls:
+            raise RuntimeError(
+                "Codex used disallowed side-channel tools: "
+                + ", ".join(tool_calls)
+            )
+
+        failures = [
+            event
+            for event in events
+            if event.get("type") in ("error", "turn.failed")
+        ]
+        if failures:
+            raise RuntimeError(f"Codex turn failed: {failures[-1]}")
+
+        usage = {}
+        for event in events:
+            if event.get("type") == "turn.completed":
+                usage = event.get("usage", {})
+
+        text = (
+            output_path.read_text(encoding="utf-8").strip()
+            if output_path.exists()
+            else ""
+        )
+        if not text:
+            messages = [
+                event.get("item", {}).get("text", "")
+                for event in events
+                if event.get("type") == "item.completed"
+                and event.get("item", {}).get("type") == "agent_message"
+            ]
+            text = messages[-1].strip() if messages else ""
+
+        return text, usage, tool_calls
 
 
 def _usage_dict(response: Any) -> dict:
@@ -264,6 +517,8 @@ def call_json_compat(
             "messages": claude_messages,
             "max_tokens": 1024,
         }
+    elif client.provider == "codex":
+        request = {"model": model}
     else:
         request = {
             "model": model,
@@ -273,16 +528,25 @@ def call_json_compat(
 
     attempts = 6
     last_exc = None
-    started = time.time()
-
     for attempt in range(1, attempts + 1):
+        started = time.monotonic()
+        tool_calls: List[str] = []
         try:
+            usage = {}
             if client.provider == "claude":
                 response = client.client.messages.create(**request)
                 text = "".join(
                     getattr(block, "text", "")
                     for block in response.content
                     if getattr(block, "type", None) == "text"
+                )
+                usage = _usage_dict(response)
+            elif client.provider == "codex":
+                text, usage, tool_calls = _run_codex(
+                    model=model,
+                    instructions=instructions,
+                    input_messages=input_messages,
+                    stage=stage,
                 )
             else:
                 try:
@@ -298,36 +562,54 @@ def call_json_compat(
 
                 message = response.choices[0].message
                 text = message.content or ""
+                usage = _usage_dict(response)
 
             obj = parse_json_text(text)
-
-            client.audit.append({
-                "job_id": job_id,
-                "stage": stage,
-                "provider": client.provider,
-                "model": model,
-                "attempt": attempt,
-                "latency_s": time.time() - started,
-                "usage": _usage_dict(response),
-                "response": obj,
-            })
-
-            if pause_s:
-                time.sleep(pause_s)
-            return obj
+            _validate_response(obj, stage)
 
         except Exception as exc:
             last_exc = exc
-            client.audit.append({
+            error_entry = {
                 "job_id": job_id,
                 "stage": stage,
                 "provider": client.provider,
                 "model": model,
                 "attempt": attempt,
+                "latency_s": time.monotonic() - started,
                 "error": repr(exc),
-            })
+            }
+            if client.provider == "codex":
+                error_entry["execution_mode"] = "codex_cli_agent"
+            client.audit.append(error_entry)
             if attempt < attempts:
                 time.sleep(min(2 ** (attempt - 1), 20))
+            continue
+
+        success_entry = {
+            "job_id": job_id,
+            "stage": stage,
+            "provider": client.provider,
+            "model": model,
+            "attempt": attempt,
+            "latency_s": time.monotonic() - started,
+            "usage": usage,
+            "response": obj,
+        }
+        if client.provider == "codex":
+            success_entry.update(
+                {
+                    "execution_mode": "codex_cli_agent",
+                    "side_channel_tool_calls": tool_calls,
+                }
+            )
+        client.audit.append(success_entry)
+
+        if ledger is not None:
+            ledger.record(job_id or "", stage or "")
+
+        if pause_s:
+            time.sleep(pause_s)
+        return obj
 
     raise RuntimeError(
         f"API call failed after {attempts} attempts "

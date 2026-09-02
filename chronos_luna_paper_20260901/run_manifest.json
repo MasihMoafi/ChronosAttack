@@ -1,0 +1,29 @@
+{
+  "seed": 20260814,
+  "providers": [
+    "codex"
+  ],
+  "models": {
+    "codex": "gpt-5.6-luna"
+  },
+  "execution_modes": {
+    "codex": "codex_cli_agent"
+  },
+  "experiments": [
+    "confirmation",
+    "budget",
+    "barrier",
+    "consistency"
+  ],
+  "stateful_trials": 30,
+  "stateless_trials": 10,
+  "controls": 10,
+  "budget_trials": 15,
+  "barrier_trials": 15,
+  "consistency_trials": 10,
+  "scenario_ids": [
+    "cloud_backup",
+    "shipping_partner"
+  ],
+  "note": "The same chronos_helper scenario builders, prompts, schedules, payloads, hashes, and stateful logic are reused for all providers. Codex is a separately labelled, isolated CLI-agent condition."
+}

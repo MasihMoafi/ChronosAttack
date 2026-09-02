@@ -552,8 +552,8 @@ def run_order_consistency_suite(
 def main():
     p = argparse.ArgumentParser(
         description=(
-            "Run the paper-critical ChronosAttack experiments on OpenAI, "
-            "Gemini, DeepSeek, and Claude."
+            "Run the paper-critical ChronosAttack experiments on Codex, "
+            "OpenAI, Gemini, DeepSeek, and Claude."
         )
         
     )
@@ -563,6 +563,7 @@ def main():
         choices=sorted(PROVIDERS),
         default=["openai", "gemini", "deepseek", "claude"],
     )
+    p.add_argument("--codex-model", default="gpt-5.6-terra")
     p.add_argument("--openai-model", default="gpt-5.6-sol")
     p.add_argument("--gemini-model", default="gemini-3.6-flash")
     p.add_argument("--deepseek-model", default="deepseek-v4-flash")
@@ -587,6 +588,7 @@ def main():
     patch_chronos_v8(helper)
 
     model_map = {
+        "codex": args.codex_model,
         "openai": args.openai_model,
         "gemini": args.gemini_model,
         "deepseek": args.deepseek_model,
@@ -600,7 +602,11 @@ def main():
         "seed": SEED,
         "providers": args.providers,
         "models": {p: model_map[p] for p in args.providers},
-        "experiments": args.experiments,
+        "execution_modes": {
+            p: "codex_cli_agent" if p == "codex" else "provider_api"
+            for p in args.providers
+        },
+        "experiments": list(args.experiments),
         "stateful_trials": args.stateful_trials,
         "stateless_trials": args.stateless_trials,
         "controls": args.controls,
@@ -610,10 +616,25 @@ def main():
         "scenario_ids": scenario_ids(),
         "note": (
             "The same chronos_helper scenario builders, prompts, schedules, "
-            "payloads, hashes, and stateful logic are reused for all providers."
+            "payloads, hashes, and stateful logic are reused for all providers. "
+            "Codex is a separately labelled, isolated CLI-agent condition."
         ),
     }
-    save_json(root / "run_manifest.json", manifest)
+    manifest_path = root / "run_manifest.json"
+    if args.resume and manifest_path.exists():
+        if load_json(manifest_path, {}) != manifest:
+            raise RuntimeError(
+                "Cannot resume: the existing run manifest does not match "
+                "the requested providers, models, experiments, or trial counts. "
+                "Use the original settings or a new output directory."
+            )
+    elif args.resume and any(root.iterdir()):
+        raise RuntimeError(
+            "Cannot resume a non-empty output directory without "
+            "run_manifest.json. Use a new output directory."
+        )
+    else:
+        save_json(manifest_path, manifest)
 
     for provider in args.providers:
         out = root / provider
@@ -630,6 +651,11 @@ def main():
             f"\n[{provider}] model={pc.model} "
             f"preflight={'ok' if exists else 'not-confirmed'}"
         )
+        if provider == "codex" and not exists:
+            raise RuntimeError(
+                "Codex preflight failed: verify the CLI installation, "
+                "ChatGPT login, and selected model."
+            )
         if args.preflight_only:
             continue
 

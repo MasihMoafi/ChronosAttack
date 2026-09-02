@@ -25,15 +25,21 @@ For the two paper scenarios, the agent receives three tool observations and choo
 
 ## Project Structure
 
-A clean release should contain:
+The source and curated extension record contain:
 
 ```text
 ChronosAttack/
 ├── README.md
+├── RESULTS.md
 ├── requirements.txt
 ├── helper.py
 ├── chronos_multimodel_full.py
 ├── chronos_provider_adapter.py
+├── run_experiments_tmux.sh
+├── test_chronos_extension.py
+├── chronos_luna_paper_20260901/
+│   ├── run_manifest.json
+│   └── codex/*_trials.json
 └── chronosattack_study_figure.drawio.png
 ```
 
@@ -81,6 +87,25 @@ $env:ANTHROPIC_API_KEY="your-anthropic-key"
 ```
 
 Set the corresponding credentials required by `chronos_provider_adapter.py` for any other providers you plan to run.
+
+### Codex subscription
+
+The `codex` provider uses an existing ChatGPT/Codex CLI subscription instead
+of an API key. Authenticate once with `codex login`, then select it explicitly:
+
+```bash
+python chronos_multimodel_full.py \
+    --providers codex \
+    --codex-model gpt-5.6-terra \
+    --out chronos_codex_results
+```
+
+Codex results are labelled `codex_cli_agent`, not as raw provider-API calls.
+Each call runs in an isolated, read-only temporary workspace, ignores local
+Codex configuration and repository instructions, enforces the requested JSON
+schema, and rejects results that used unrelated shell, web, MCP, filesystem,
+or subagent tools. The ChronosAttack tool observations and scheduling logic
+remain unchanged.
 
 ## Running the Experiments
 
@@ -138,6 +163,15 @@ python .\chronos_multimodel_full.py `
     --out .\chronos_multimodel_results `
     --resume
 ```
+
+### Run Codex in a background tmux session
+
+```bash
+./run_experiments_tmux.sh chronos_codex_results
+```
+
+The script runs all four experiment groups with the paper defaults and resumes
+the same output directory after an interruption.
 
 ## Output Files
 

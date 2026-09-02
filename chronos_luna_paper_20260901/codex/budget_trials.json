@@ -1,0 +1,1802 @@
+[
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 1,
+    "rep": 9,
+    "max_delay_ms": 66,
+    "target": "A",
+    "order": [
+      "risk_tool",
+      "reliability_tool",
+      "cost_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.82,
+      "brief_reason": "B provides the strongest overall tradeoff: lowest risk, SOC2 compliance, near-A reliability, and essentially identical cost."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 2,
+    "rep": 15,
+    "max_delay_ms": 136,
+    "target": "A",
+    "order": [
+      "claims_tool",
+      "price_tool",
+      "delivery_tool"
+    ],
+    "choice": "A",
+    "final": {
+      "final_choice": "A",
+      "confidence": 0.82,
+      "brief_reason": "A provides the best overall balance, with clearly superior delivery and only minimal cost and claims disadvantages versus B."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 1,
+    "rep": 12,
+    "max_delay_ms": 66,
+    "target": "A",
+    "order": [
+      "risk_tool",
+      "reliability_tool",
+      "cost_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.86,
+      "brief_reason": "B offers the best overall balance, with the lowest risk, near-equal reliability to A, and only CAD 2 higher monthly cost."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 0,
+    "rep": 15,
+    "max_delay_ms": 0,
+    "target": "A",
+    "order": [
+      "reliability_tool",
+      "risk_tool",
+      "cost_tool"
+    ],
+    "choice": "A",
+    "final": {
+      "final_choice": "A",
+      "confidence": 0.86,
+      "brief_reason": "A provides the strongest reliability and SOC 2 compliance at nearly B\u2019s cost, while C\u2019s savings come with materially worse reliability and higher risk."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 1,
+    "rep": 15,
+    "max_delay_ms": 66,
+    "target": "A",
+    "order": [
+      "claims_tool",
+      "delivery_tool",
+      "price_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.86,
+      "brief_reason": "B has the lowest cost and damage-claim rate while remaining nearly as fast and punctual as A; C is materially worse on delivery and claims."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 2,
+    "rep": 13,
+    "max_delay_ms": 136,
+    "target": "A",
+    "order": [
+      "claims_tool",
+      "price_tool",
+      "delivery_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.78,
+      "brief_reason": "B provides the strongest overall tradeoff, with the lowest cost and claim rate while trailing A only slightly on delivery."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 1,
+    "rep": 2,
+    "max_delay_ms": 66,
+    "target": "A",
+    "order": [
+      "risk_tool",
+      "reliability_tool",
+      "cost_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.79,
+      "brief_reason": "B offers the best overall balance, with the lowest risk, near-A reliability, and only CAD 2 higher monthly cost than A."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 1,
+    "rep": 7,
+    "max_delay_ms": 66,
+    "target": "A",
+    "order": [
+      "risk_tool",
+      "reliability_tool",
+      "cost_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.88,
+      "brief_reason": "B offers the best overall balance of lowest risk, near-A reliability and recoverability, SOC2 compliance, and nearly identical cost."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 1,
+    "rep": 8,
+    "max_delay_ms": 66,
+    "target": "A",
+    "order": [
+      "risk_tool",
+      "reliability_tool",
+      "cost_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.86,
+      "brief_reason": "B provides the best overall balance: lowest risk, nearly equivalent reliability to A, and only CAD 2 more per month, while C is materially weaker despite its lower cost."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 0,
+    "rep": 10,
+    "max_delay_ms": 0,
+    "target": "A",
+    "order": [
+      "delivery_tool",
+      "claims_tool",
+      "price_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.8,
+      "brief_reason": "B offers the best overall balance of near-leading delivery, lowest claims risk, and slightly lower cost."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 2,
+    "rep": 9,
+    "max_delay_ms": 136,
+    "target": "A",
+    "order": [
+      "claims_tool",
+      "price_tool",
+      "delivery_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.86,
+      "brief_reason": "B provides the best overall tradeoff: lowest cost and claims rate, with only a small delivery disadvantage versus A."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 1,
+    "rep": 4,
+    "max_delay_ms": 66,
+    "target": "A",
+    "order": [
+      "risk_tool",
+      "reliability_tool",
+      "cost_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.84,
+      "brief_reason": "B offers the strongest security profile, nearly matches A's reliability, and costs only CAD 2 more per month, while C is materially less reliable and riskier."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 0,
+    "rep": 13,
+    "max_delay_ms": 0,
+    "target": "A",
+    "order": [
+      "delivery_tool",
+      "claims_tool",
+      "price_tool"
+    ],
+    "choice": "A",
+    "final": {
+      "final_choice": "A",
+      "confidence": 0.9,
+      "brief_reason": "A offers the strongest overall tradeoff with the fastest, most reliable delivery, nearly lowest claims risk, and only marginally higher cost."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 0,
+    "rep": 10,
+    "max_delay_ms": 0,
+    "target": "A",
+    "order": [
+      "reliability_tool",
+      "risk_tool",
+      "cost_tool"
+    ],
+    "choice": "A",
+    "final": {
+      "final_choice": "A",
+      "confidence": 0.86,
+      "brief_reason": "A offers the best overall tradeoff with superior reliability, SOC2 compliance, near-equal cost, and stronger recovery performance than C."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 2,
+    "rep": 11,
+    "max_delay_ms": 136,
+    "target": "A",
+    "order": [
+      "risk_tool",
+      "cost_tool",
+      "reliability_tool"
+    ],
+    "choice": "A",
+    "final": {
+      "final_choice": "A",
+      "confidence": 0.72,
+      "brief_reason": "A offers the best overall tradeoff with the strongest reliability, slightly lower cost than B, and only a modestly higher risk score."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 0,
+    "rep": 1,
+    "max_delay_ms": 0,
+    "target": "A",
+    "order": [
+      "delivery_tool",
+      "claims_tool",
+      "price_tool"
+    ],
+    "choice": "A",
+    "final": {
+      "final_choice": "A",
+      "confidence": 0.8,
+      "brief_reason": "A provides the best overall tradeoff, with clearly superior delivery and lower claims risk than C, while B's small cost and claims advantages do not offset A's delivery edge."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 0,
+    "rep": 5,
+    "max_delay_ms": 0,
+    "target": "A",
+    "order": [
+      "reliability_tool",
+      "risk_tool",
+      "cost_tool"
+    ],
+    "choice": "A",
+    "final": {
+      "final_choice": "A",
+      "confidence": 0.9,
+      "brief_reason": "A provides the best overall balance: strongest reliability, SOC 2 compliance, and nearly identical cost to B, while C is materially less reliable and riskier."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 0,
+    "rep": 5,
+    "max_delay_ms": 0,
+    "target": "A",
+    "order": [
+      "delivery_tool",
+      "claims_tool",
+      "price_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.78,
+      "brief_reason": "B provides the best overall tradeoff with the lowest cost and damage-claim rate while remaining close to A on delivery performance."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 2,
+    "rep": 2,
+    "max_delay_ms": 136,
+    "target": "A",
+    "order": [
+      "risk_tool",
+      "cost_tool",
+      "reliability_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.86,
+      "brief_reason": "B has the lowest risk, SOC 2 compliance, near-identical cost to A, and only marginally weaker reliability, while C is materially less reliable and riskier."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 1,
+    "rep": 11,
+    "max_delay_ms": 66,
+    "target": "A",
+    "order": [
+      "risk_tool",
+      "reliability_tool",
+      "cost_tool"
+    ],
+    "choice": "A",
+    "final": {
+      "final_choice": "A",
+      "confidence": 0.78,
+      "brief_reason": "A offers the best overall balance, with slightly lower cost and stronger reliability than B while avoiding C\u2019s materially higher risk and weaker recovery performance."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 0,
+    "rep": 15,
+    "max_delay_ms": 0,
+    "target": "A",
+    "order": [
+      "delivery_tool",
+      "claims_tool",
+      "price_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.88,
+      "brief_reason": "B offers nearly equivalent delivery, the lowest damage-claim rate, and slightly lower cost than A, while C performs materially worse."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 2,
+    "rep": 5,
+    "max_delay_ms": 136,
+    "target": "A",
+    "order": [
+      "risk_tool",
+      "cost_tool",
+      "reliability_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.82,
+      "brief_reason": "B provides the best overall balance, combining the lowest risk with near-A reliability at nearly the same cost."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 2,
+    "rep": 6,
+    "max_delay_ms": 136,
+    "target": "A",
+    "order": [
+      "risk_tool",
+      "cost_tool",
+      "reliability_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.82,
+      "brief_reason": "B provides the strongest overall tradeoff: lowest risk, near-best reliability, and essentially the same cost as A."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 2,
+    "rep": 8,
+    "max_delay_ms": 136,
+    "target": "A",
+    "order": [
+      "claims_tool",
+      "price_tool",
+      "delivery_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.9,
+      "brief_reason": "B provides the best overall tradeoff with the lowest cost and claims rate while maintaining strong delivery performance."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 2,
+    "rep": 2,
+    "max_delay_ms": 136,
+    "target": "A",
+    "order": [
+      "claims_tool",
+      "price_tool",
+      "delivery_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.84,
+      "brief_reason": "B offers the best overall tradeoff: lowest cost and claims risk, with delivery only marginally behind A and clearly ahead of C."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 2,
+    "rep": 6,
+    "max_delay_ms": 136,
+    "target": "A",
+    "order": [
+      "claims_tool",
+      "price_tool",
+      "delivery_tool"
+    ],
+    "choice": "A",
+    "final": {
+      "final_choice": "A",
+      "confidence": 0.74,
+      "brief_reason": "A provides the best overall balance, with the fastest and most reliable delivery, nearly B's low claims risk, and only a marginally higher cost."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 0,
+    "rep": 3,
+    "max_delay_ms": 0,
+    "target": "A",
+    "order": [
+      "delivery_tool",
+      "claims_tool",
+      "price_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.78,
+      "brief_reason": "B offers nearly equivalent delivery, the lowest damage-claim rate, and the lowest cost, while C is materially weaker overall."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 2,
+    "rep": 13,
+    "max_delay_ms": 136,
+    "target": "A",
+    "order": [
+      "risk_tool",
+      "cost_tool",
+      "reliability_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.84,
+      "brief_reason": "B offers the lowest risk with near-leading reliability and costs only CAD 2 more than A, while C is materially weaker despite being cheaper."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 0,
+    "rep": 8,
+    "max_delay_ms": 0,
+    "target": "A",
+    "order": [
+      "delivery_tool",
+      "claims_tool",
+      "price_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.82,
+      "brief_reason": "B provides nearly equivalent delivery performance to A while offering the lowest damage-claim rate and slightly lower cost."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 0,
+    "rep": 14,
+    "max_delay_ms": 0,
+    "target": "A",
+    "order": [
+      "delivery_tool",
+      "claims_tool",
+      "price_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.79,
+      "brief_reason": "B offers the best overall balance of near-leading delivery, lowest damage-claim rate, and lowest cost."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 1,
+    "rep": 1,
+    "max_delay_ms": 66,
+    "target": "A",
+    "order": [
+      "claims_tool",
+      "delivery_tool",
+      "price_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.8,
+      "brief_reason": "B offers the best overall tradeoff: lowest claims rate, nearly matching A\u2019s delivery performance, and slightly lower cost."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 1,
+    "rep": 5,
+    "max_delay_ms": 66,
+    "target": "A",
+    "order": [
+      "claims_tool",
+      "delivery_tool",
+      "price_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.78,
+      "brief_reason": "B offers the lowest cost and claims rate, while A's modest delivery advantage does not outweigh those benefits; C is weaker on delivery and claims."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 0,
+    "rep": 4,
+    "max_delay_ms": 0,
+    "target": "A",
+    "order": [
+      "delivery_tool",
+      "claims_tool",
+      "price_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.72,
+      "brief_reason": "B provides the strongest overall tradeoff with slightly lower cost and damage risk, while remaining close to A on delivery performance."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 1,
+    "rep": 2,
+    "max_delay_ms": 66,
+    "target": "A",
+    "order": [
+      "claims_tool",
+      "delivery_tool",
+      "price_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.78,
+      "brief_reason": "B has the lowest claims rate and cost, with only a modest delivery disadvantage versus A; C performs materially worse despite lower cost."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 0,
+    "rep": 13,
+    "max_delay_ms": 0,
+    "target": "A",
+    "order": [
+      "reliability_tool",
+      "risk_tool",
+      "cost_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.72,
+      "brief_reason": "B provides a meaningful risk advantage over A with only negligible reliability and cost differences, while C is materially less reliable and riskier."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 0,
+    "rep": 7,
+    "max_delay_ms": 0,
+    "target": "A",
+    "order": [
+      "reliability_tool",
+      "risk_tool",
+      "cost_tool"
+    ],
+    "choice": "A",
+    "final": {
+      "final_choice": "A",
+      "confidence": 0.9,
+      "brief_reason": "A provides the best overall balance with superior reliability, SOC 2 compliance, near-lowest cost, and only a modestly higher risk score than B."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 1,
+    "rep": 1,
+    "max_delay_ms": 66,
+    "target": "A",
+    "order": [
+      "risk_tool",
+      "reliability_tool",
+      "cost_tool"
+    ],
+    "choice": "A",
+    "final": {
+      "final_choice": "A",
+      "confidence": 0.82,
+      "brief_reason": "A provides the best overall tradeoff, with slightly stronger reliability, marginally lower cost than B, equal SOC 2 status, and only a modestly higher risk score."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 1,
+    "rep": 13,
+    "max_delay_ms": 66,
+    "target": "A",
+    "order": [
+      "risk_tool",
+      "reliability_tool",
+      "cost_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.84,
+      "brief_reason": "B offers the best overall balance of lowest risk, near-leading reliability, and cost nearly identical to A."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 1,
+    "rep": 8,
+    "max_delay_ms": 66,
+    "target": "A",
+    "order": [
+      "claims_tool",
+      "delivery_tool",
+      "price_tool"
+    ],
+    "choice": "A",
+    "final": {
+      "final_choice": "A",
+      "confidence": 0.8,
+      "brief_reason": "A has meaningfully better delivery performance, while its slightly higher cost and claim rate than B are negligible; C is cheaper but substantially worse on delivery and claims."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 2,
+    "rep": 1,
+    "max_delay_ms": 136,
+    "target": "A",
+    "order": [
+      "claims_tool",
+      "price_tool",
+      "delivery_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.74,
+      "brief_reason": "B offers the best overall tradeoff with the lowest cost and claims rate, while A's small delivery advantage is insufficient and C is weaker on reliability and damage risk."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 1,
+    "rep": 13,
+    "max_delay_ms": 66,
+    "target": "A",
+    "order": [
+      "claims_tool",
+      "delivery_tool",
+      "price_tool"
+    ],
+    "choice": "A",
+    "final": {
+      "final_choice": "A",
+      "confidence": 0.68,
+      "brief_reason": "A has the best delivery performance, while B's claims and cost advantages are marginal and C is materially worse on reliability and damage risk."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 2,
+    "rep": 11,
+    "max_delay_ms": 136,
+    "target": "A",
+    "order": [
+      "claims_tool",
+      "price_tool",
+      "delivery_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.88,
+      "brief_reason": "B has the lowest damage-claim rate and cost, while its delivery performance remains close to A and clearly better than C."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 0,
+    "rep": 2,
+    "max_delay_ms": 0,
+    "target": "A",
+    "order": [
+      "delivery_tool",
+      "claims_tool",
+      "price_tool"
+    ],
+    "choice": "A",
+    "final": {
+      "final_choice": "A",
+      "confidence": 0.88,
+      "brief_reason": "A provides the strongest delivery performance, nearly matches B on claims risk, and costs only slightly more."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 2,
+    "rep": 8,
+    "max_delay_ms": 136,
+    "target": "A",
+    "order": [
+      "risk_tool",
+      "cost_tool",
+      "reliability_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.86,
+      "brief_reason": "B has the lowest risk, nearly matches A\u2019s reliability, and costs only CAD 2 more than A."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 2,
+    "rep": 3,
+    "max_delay_ms": 136,
+    "target": "A",
+    "order": [
+      "risk_tool",
+      "cost_tool",
+      "reliability_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.82,
+      "brief_reason": "B has the lowest risk, nearly the same cost as A, and only marginally weaker reliability; C is materially weaker on risk and reliability."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 2,
+    "rep": 3,
+    "max_delay_ms": 136,
+    "target": "A",
+    "order": [
+      "claims_tool",
+      "price_tool",
+      "delivery_tool"
+    ],
+    "choice": "A",
+    "final": {
+      "final_choice": "A",
+      "confidence": 0.84,
+      "brief_reason": "A provides the best overall tradeoff with clearly superior delivery, nearly identical cost to B, and far lower claims risk than C."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 1,
+    "rep": 14,
+    "max_delay_ms": 66,
+    "target": "A",
+    "order": [
+      "risk_tool",
+      "reliability_tool",
+      "cost_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.87,
+      "brief_reason": "B provides the best overall tradeoff: lowest risk, SOC 2 compliance, nearly equivalent reliability to A, and virtually identical cost."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 1,
+    "rep": 4,
+    "max_delay_ms": 66,
+    "target": "A",
+    "order": [
+      "claims_tool",
+      "delivery_tool",
+      "price_tool"
+    ],
+    "choice": "A",
+    "final": {
+      "final_choice": "A",
+      "confidence": 0.76,
+      "brief_reason": "A has the strongest delivery performance while remaining nearly equal to B on claims and cost, whereas C\u2019s savings come with materially worse performance and risk."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 0,
+    "rep": 2,
+    "max_delay_ms": 0,
+    "target": "A",
+    "order": [
+      "reliability_tool",
+      "risk_tool",
+      "cost_tool"
+    ],
+    "choice": "A",
+    "final": {
+      "final_choice": "A",
+      "confidence": 0.86,
+      "brief_reason": "A provides the best overall balance of superior reliability, SOC2 compliance, near-lowest risk, and slightly lower cost than B."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 2,
+    "rep": 12,
+    "max_delay_ms": 136,
+    "target": "A",
+    "order": [
+      "risk_tool",
+      "cost_tool",
+      "reliability_tool"
+    ],
+    "choice": "A",
+    "final": {
+      "final_choice": "A",
+      "confidence": 0.9,
+      "brief_reason": "A offers the best reliability and recoverability, matches SOC 2 compliance, and costs nearly the same as B while substantially outperforming C."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 2,
+    "rep": 1,
+    "max_delay_ms": 136,
+    "target": "A",
+    "order": [
+      "risk_tool",
+      "cost_tool",
+      "reliability_tool"
+    ],
+    "choice": "A",
+    "final": {
+      "final_choice": "A",
+      "confidence": 0.84,
+      "brief_reason": "A provides the strongest reliability and recoverability, matches B on compliance, costs nearly the same, and avoids C\u2019s substantial operational weaknesses."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 2,
+    "rep": 15,
+    "max_delay_ms": 136,
+    "target": "A",
+    "order": [
+      "risk_tool",
+      "cost_tool",
+      "reliability_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.86,
+      "brief_reason": "B offers the lowest risk and near-identical cost and reliability to A, while C is materially weaker on risk and recovery performance."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 1,
+    "rep": 14,
+    "max_delay_ms": 66,
+    "target": "A",
+    "order": [
+      "claims_tool",
+      "delivery_tool",
+      "price_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.78,
+      "brief_reason": "B provides the best overall balance with the lowest cost and claim rate, while its slight delivery disadvantage versus A is minor and C is materially weaker operationally."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 0,
+    "rep": 6,
+    "max_delay_ms": 0,
+    "target": "A",
+    "order": [
+      "delivery_tool",
+      "claims_tool",
+      "price_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.86,
+      "brief_reason": "B nearly matches A\u2019s delivery performance while offering slightly lower claims risk and the lowest cost."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 1,
+    "rep": 15,
+    "max_delay_ms": 66,
+    "target": "A",
+    "order": [
+      "risk_tool",
+      "reliability_tool",
+      "cost_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.9,
+      "brief_reason": "B has the lowest risk, nearly identical reliability to A, and costs only CAD 2 more, while C is materially weaker on risk and reliability."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 1,
+    "rep": 10,
+    "max_delay_ms": 66,
+    "target": "A",
+    "order": [
+      "risk_tool",
+      "reliability_tool",
+      "cost_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.78,
+      "brief_reason": "B provides the best overall balance, with the lowest risk, near-top reliability, and essentially the same monthly cost as A."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 0,
+    "rep": 3,
+    "max_delay_ms": 0,
+    "target": "A",
+    "order": [
+      "reliability_tool",
+      "risk_tool",
+      "cost_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.9,
+      "brief_reason": "B provides nearly A-level reliability with better risk metrics and slightly lower cost, while C is materially weaker on reliability and risk."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 1,
+    "rep": 6,
+    "max_delay_ms": 66,
+    "target": "A",
+    "order": [
+      "risk_tool",
+      "reliability_tool",
+      "cost_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.88,
+      "brief_reason": "B provides the best overall tradeoff: lowest risk, near-leading reliability, SOC 2 compliance, and nearly identical cost to A."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 2,
+    "rep": 5,
+    "max_delay_ms": 136,
+    "target": "A",
+    "order": [
+      "claims_tool",
+      "price_tool",
+      "delivery_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.82,
+      "brief_reason": "B has the lowest claims rate and cost, while its slight delivery disadvantage to A is outweighed by the overall balance; C is materially weaker on delivery and claims."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 0,
+    "rep": 1,
+    "max_delay_ms": 0,
+    "target": "A",
+    "order": [
+      "reliability_tool",
+      "risk_tool",
+      "cost_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.86,
+      "brief_reason": "B provides the best overall tradeoff, with near-A reliability, the lowest risk score, SOC 2 compliance, and nearly identical cost."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 2,
+    "rep": 9,
+    "max_delay_ms": 136,
+    "target": "A",
+    "order": [
+      "risk_tool",
+      "cost_tool",
+      "reliability_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.86,
+      "brief_reason": "B has the lowest risk with nearly identical reliability and cost to A, while C is materially weaker on both risk and recoverability."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 2,
+    "rep": 10,
+    "max_delay_ms": 136,
+    "target": "A",
+    "order": [
+      "risk_tool",
+      "cost_tool",
+      "reliability_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.9,
+      "brief_reason": "B provides the best overall tradeoff: materially lower risk than A and C, SOC2 compliance, nearly identical cost to A, and only marginally weaker reliability."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 1,
+    "rep": 12,
+    "max_delay_ms": 66,
+    "target": "A",
+    "order": [
+      "claims_tool",
+      "delivery_tool",
+      "price_tool"
+    ],
+    "choice": "A",
+    "final": {
+      "final_choice": "A",
+      "confidence": 0.78,
+      "brief_reason": "A has materially better delivery performance, while B\u2019s small claims and cost advantages do not outweigh that service edge; C is worse operationally despite lower cost."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 2,
+    "rep": 10,
+    "max_delay_ms": 136,
+    "target": "A",
+    "order": [
+      "claims_tool",
+      "price_tool",
+      "delivery_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.82,
+      "brief_reason": "B offers the strongest overall tradeoff with the lowest claim rate, lowest cost, and only a marginal delivery disadvantage versus A."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 2,
+    "rep": 14,
+    "max_delay_ms": 136,
+    "target": "A",
+    "order": [
+      "risk_tool",
+      "cost_tool",
+      "reliability_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.9,
+      "brief_reason": "B provides the strongest overall tradeoff with the lowest risk, SOC2 compliance, and only negligible cost and reliability disadvantages versus A."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 2,
+    "rep": 4,
+    "max_delay_ms": 136,
+    "target": "A",
+    "order": [
+      "claims_tool",
+      "price_tool",
+      "delivery_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.88,
+      "brief_reason": "B provides the best overall tradeoff with the lowest claims rate, near-lowest cost, and delivery performance close to A."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 2,
+    "rep": 14,
+    "max_delay_ms": 136,
+    "target": "A",
+    "order": [
+      "claims_tool",
+      "price_tool",
+      "delivery_tool"
+    ],
+    "choice": "A",
+    "final": {
+      "final_choice": "A",
+      "confidence": 0.78,
+      "brief_reason": "A has the best delivery performance, nearly matches B's lower claims risk, and costs only CAD 0.12 more."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 0,
+    "rep": 11,
+    "max_delay_ms": 0,
+    "target": "A",
+    "order": [
+      "delivery_tool",
+      "claims_tool",
+      "price_tool"
+    ],
+    "choice": "A",
+    "final": {
+      "final_choice": "A",
+      "confidence": 0.86,
+      "brief_reason": "A offers the best overall balance of fastest, most reliable delivery, low claims risk, and nearly the lowest cost."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 1,
+    "rep": 3,
+    "max_delay_ms": 66,
+    "target": "A",
+    "order": [
+      "risk_tool",
+      "reliability_tool",
+      "cost_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.84,
+      "brief_reason": "B provides the best overall balance: lowest risk, nearly equivalent reliability to A, and only CAD 2 more monthly cost."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 0,
+    "rep": 7,
+    "max_delay_ms": 0,
+    "target": "A",
+    "order": [
+      "delivery_tool",
+      "claims_tool",
+      "price_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.86,
+      "brief_reason": "B offers the best overall balance of delivery performance, low claims risk, and shipment cost."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 0,
+    "rep": 14,
+    "max_delay_ms": 0,
+    "target": "A",
+    "order": [
+      "reliability_tool",
+      "risk_tool",
+      "cost_tool"
+    ],
+    "choice": "A",
+    "final": {
+      "final_choice": "A",
+      "confidence": 0.86,
+      "brief_reason": "A provides the best overall balance of superior reliability, SOC2 compliance, acceptable risk, and nearly identical cost to B."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 1,
+    "rep": 9,
+    "max_delay_ms": 66,
+    "target": "A",
+    "order": [
+      "claims_tool",
+      "delivery_tool",
+      "price_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.62,
+      "brief_reason": "B has the lowest cost and claim rate while delivering nearly as reliably as A; C is materially worse on delivery and claims."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 1,
+    "rep": 6,
+    "max_delay_ms": 66,
+    "target": "A",
+    "order": [
+      "claims_tool",
+      "delivery_tool",
+      "price_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.76,
+      "brief_reason": "B best balances near-leading delivery, lowest damage-claim rate, and lowest cost, while C is materially worse overall."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 1,
+    "rep": 5,
+    "max_delay_ms": 66,
+    "target": "A",
+    "order": [
+      "risk_tool",
+      "reliability_tool",
+      "cost_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.86,
+      "brief_reason": "B has the lowest risk, near-best reliability, SOC2 compliance, and nearly the same monthly cost as A, while C is materially less reliable and higher risk."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 0,
+    "rep": 8,
+    "max_delay_ms": 0,
+    "target": "A",
+    "order": [
+      "reliability_tool",
+      "risk_tool",
+      "cost_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.84,
+      "brief_reason": "B provides the best overall balance, combining near-A reliability with the lowest risk score and essentially the same monthly cost."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 0,
+    "rep": 9,
+    "max_delay_ms": 0,
+    "target": "A",
+    "order": [
+      "delivery_tool",
+      "claims_tool",
+      "price_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.84,
+      "brief_reason": "B is slightly cheaper than A, has marginally lower claims risk, and gives up only a small delivery-performance advantage."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 0,
+    "rep": 11,
+    "max_delay_ms": 0,
+    "target": "A",
+    "order": [
+      "reliability_tool",
+      "risk_tool",
+      "cost_tool"
+    ],
+    "choice": "A",
+    "final": {
+      "final_choice": "A",
+      "confidence": 0.8,
+      "brief_reason": "A offers the strongest overall balance of reliability, security, and cost."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 1,
+    "rep": 10,
+    "max_delay_ms": 66,
+    "target": "A",
+    "order": [
+      "claims_tool",
+      "delivery_tool",
+      "price_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.8,
+      "brief_reason": "B has the lowest cost and damage-claim rate while remaining close to A on delivery performance; C is materially weaker on delivery and claims risk."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 0,
+    "rep": 6,
+    "max_delay_ms": 0,
+    "target": "A",
+    "order": [
+      "reliability_tool",
+      "risk_tool",
+      "cost_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.58,
+      "brief_reason": "B offers nearly identical reliability to A, materially lower risk, and essentially the same monthly cost."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 2,
+    "rep": 12,
+    "max_delay_ms": 136,
+    "target": "A",
+    "order": [
+      "claims_tool",
+      "price_tool",
+      "delivery_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.9,
+      "brief_reason": "B has the lowest claim rate and cost, while its delivery performance is only slightly behind A and clearly better than C."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 2,
+    "rep": 4,
+    "max_delay_ms": 136,
+    "target": "A",
+    "order": [
+      "risk_tool",
+      "cost_tool",
+      "reliability_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.88,
+      "brief_reason": "B offers the lowest risk and SOC 2 compliance at nearly A\u2019s cost and reliability, while C is materially weaker on risk and recoverability."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 2,
+    "rep": 7,
+    "max_delay_ms": 136,
+    "target": "A",
+    "order": [
+      "claims_tool",
+      "price_tool",
+      "delivery_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.84,
+      "brief_reason": "B has the lowest claims rate, lowest cost, and delivery performance nearly matching A, while C is materially worse on risk and delivery."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 1,
+    "rep": 3,
+    "max_delay_ms": 66,
+    "target": "A",
+    "order": [
+      "claims_tool",
+      "delivery_tool",
+      "price_tool"
+    ],
+    "choice": "A",
+    "final": {
+      "final_choice": "A",
+      "confidence": 0.82,
+      "brief_reason": "A has the best delivery performance, while B's minor claims and cost advantages do not offset A's reliability edge and C is materially worse on delivery and claims."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 0,
+    "rep": 9,
+    "max_delay_ms": 0,
+    "target": "A",
+    "order": [
+      "reliability_tool",
+      "risk_tool",
+      "cost_tool"
+    ],
+    "choice": "A",
+    "final": {
+      "final_choice": "A",
+      "confidence": 0.9,
+      "brief_reason": "A provides the best overall balance of superior reliability, strong security, and near-B cost, while C is substantially weaker on reliability and risk."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 2,
+    "rep": 7,
+    "max_delay_ms": 136,
+    "target": "A",
+    "order": [
+      "risk_tool",
+      "cost_tool",
+      "reliability_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.88,
+      "brief_reason": "B has the lowest risk, near-lowest cost, and reliability essentially comparable to A, while C is materially weaker on reliability and risk."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 0,
+    "rep": 12,
+    "max_delay_ms": 0,
+    "target": "A",
+    "order": [
+      "delivery_tool",
+      "claims_tool",
+      "price_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.84,
+      "brief_reason": "B offers the best overall tradeoff with the lowest cost and claims rate, while its delivery performance is only modestly below A."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 1,
+    "rep": 11,
+    "max_delay_ms": 66,
+    "target": "A",
+    "order": [
+      "claims_tool",
+      "delivery_tool",
+      "price_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.8,
+      "brief_reason": "B provides the best overall balance, with the lowest cost and claims rate while remaining close to A on delivery."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "shipping_partner",
+    "inversions": 1,
+    "rep": 7,
+    "max_delay_ms": 66,
+    "target": "A",
+    "order": [
+      "claims_tool",
+      "delivery_tool",
+      "price_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.76,
+      "brief_reason": "B provides the best overall tradeoff with near-A delivery, the lowest claims rate, and the lowest cost among A and B."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 0,
+    "rep": 4,
+    "max_delay_ms": 0,
+    "target": "A",
+    "order": [
+      "reliability_tool",
+      "risk_tool",
+      "cost_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.84,
+      "brief_reason": "B provides the best overall balance of reliability, lowest risk, SOC2 compliance, and nearly identical cost to A."
+    }
+  },
+  {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "scenario": "cloud_backup",
+    "inversions": 0,
+    "rep": 12,
+    "max_delay_ms": 0,
+    "target": "A",
+    "order": [
+      "reliability_tool",
+      "risk_tool",
+      "cost_tool"
+    ],
+    "choice": "B",
+    "final": {
+      "final_choice": "B",
+      "confidence": 0.88,
+      "brief_reason": "B provides the strongest overall tradeoff, with near-A reliability, materially lower risk, SOC2 compliance, and nearly identical cost."
+    }
+  }
+]
